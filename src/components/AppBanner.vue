@@ -1,6 +1,11 @@
 <script>
 export default {
-    name: 'AppBanner'
+    name: 'AppBanner',
+    methods: {
+        goList() {
+            this.$router.push({ name: "apartments" });
+        }
+    },
 }
 </script>
 
