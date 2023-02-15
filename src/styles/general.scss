@@ -1,5 +1,11 @@
 @import "node_modules/bootstrap/scss/bootstrap";
-
+body{
+    width: 100%;
+    margin: 0 auto;
+    @media (min-width:1270px) {
+        max-width: 2520px;
+    }
+}
 img{
     max-width: 100%;
 }

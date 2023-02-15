@@ -12,12 +12,12 @@ export default {
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarSupportedContent">
+    <!-- <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarSupportedContent">
         <form class="d-flex" role="search">
         <input class="form-control search-tab" type="search" placeholder="Cerca appartamenti" aria-label="Cerca appartamenti">
         <button class="btn btn-primary search-btn ms-2" type="submit">Cerca</button>
       </form>
-    </div>
+    </div> -->
       <div>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
