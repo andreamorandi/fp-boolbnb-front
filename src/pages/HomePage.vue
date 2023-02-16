@@ -1,5 +1,4 @@
 <script>
-import { store } from '../store';
 import AppBanner from '../components/AppBanner.vue';
 import SponsorAppartament from '../components/SponsorAppartament.vue';
 

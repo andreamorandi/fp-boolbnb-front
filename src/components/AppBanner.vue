@@ -1,33 +1,20 @@
 <script>
-import { store } from '../store';
-import axios from 'axios';
 export default {
     name: 'AppBanner',
     data() {
         return {
-            store,
             full_address: '',
-            apartments: [],
         }
     },
     methods: {
-        goList() {
-            this.$router.push({ name: "apartments" });
-        },
         search() {
-            const options = {
-                params: {
-                    full_address: this.full_address
-                }
-            };
-            axios.get(`${this.store.apiBaseUrl}/api/apartments`, options).then(resp => {
-                this.apartments = resp.data.apartmets;
-                console.log(resp.data.apartments);
-            }).catch(error => {
-        console.log(error);
-    });
+            this.$store.fetchApartments(this.full_address).then(this.$store.goList());
         },
-    },
+        lucky() {
+            this.full_address = '';
+            this.search();
+        }
+    }
 }
 </script>
 
@@ -35,22 +22,13 @@ export default {
         <div class="banner">
             <div class="container-fluid">
                 <div class="search-form">
-                    <div class="form-appartament">
-                        <form @submit.prevent="submitForm">
-                            <div>
-                                <label for="search">Cerca:</label>
-                                <input type="text" id="search" v-model="full_address" required>
-                            </div>
-                            <button type="button" @click="this.search" @click.prevent="goList()">Cerca</button>
-                        </form>
-
-
-
-                        <!-- <label class="d-flex flex-sm-row flex-column" role="search">
-                            <input class="form-control input-search mb-2" type="search" placeholder="Quale città vorresti visitare" aria-label="Cerca appartamenti" v-model="this.full_address">
-                            <button id="btn-color" class="btn search-btn ms-2 mb-2" type="submit">Cerca</button>
-                        </label> -->
-                      <a @click.prevent="goList()" class="btn btn-success mt-4" href="">Mi sento fortunato</a>
+                    <div class="apartments-form d-flex flex-column align-items-center">
+                        <div>
+                            <label for="search">Cerca:</label>
+                            <input type="text" id="search" v-model="full_address" required>
+                        </div>
+                        <button type="button" @click="this.search" class="btn btn-primary mt-1">Cerca</button>
+                        <button @click="this.lucky" class="btn btn-success mt-4" href="">Mi sento fortunato</button>
                     </div>
                 </div>
             </div>
