@@ -1,22 +1,31 @@
   <script>
-import axios from 'axios';
+// import axios from 'axios';
 import ApartmentCard from '../components/ApartmentCard.vue';
-import { store } from '../store';
+// import { store } from '../store';
 
 export default {
     name: "ApartmentsList",
-    data() {
-        return {
-            store,
-            apartments: [],
-            // query: "",
-        };
-    },
-    created() {
-        this.getApartments();
-    },
+    // data() {
+    //     return {
+    //         store,
+    //         apartments: [],
+    //     };
+    // },
+    // created() {
+    //     this.getApartments();
+    // },
     methods: {
-        getApartments() {
+        // getApartments() {
+        //     const options = {
+        //         params: {
+        //             ...this.query && {}
+        //         }
+        //     };
+        //     axios.get(`${this.store.apiBaseUrl}/api/apartments`).then(resp => {
+        //         this.apartments = resp.data.results;
+        //     });
+        // },
+        search() {
             const options = {
                 params: {
                     ...this.query && {}
