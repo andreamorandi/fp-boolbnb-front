@@ -1,12 +1,18 @@
 <script>
 import axios from 'axios';
 import { store } from "../store";
+import ContactForm from '../components/ContactForm.vue';
 export default {
     name: "SingleApartment",
+    components: {ContactForm},
     data() {
         return {
             store,
-            apartment: {}
+            apartment: {},
+            name:'',
+            lastname:'',
+            email:'',
+            message:''
         }
     },
     created() {
@@ -40,7 +46,7 @@ export default {
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <table class="table">
+                    <table class="table mb-5">
                       <thead>
                         <tr>
                           <th scope="col" class="text-uppercase">{{ apartment.title }}</th>
@@ -70,6 +76,7 @@ export default {
                     <div v-else class="text-center mt-4">Nessuna immagine</div>      
                 </div>
             </div>
+        <ContactForm/>
         </div>        
     </main>
 </template>
