@@ -4,13 +4,14 @@ import axios from 'axios';
 
 export const store = reactive({
     apiBaseUrl: "http://127.0.0.1:8000",
+    address: '',
     apartments: [],
-    fetchApartments(full_address) {
+    fetchApartments() {
         let options = null;
-        if (full_address) {
+        if (this.address) {
             options = {
                 params: {
-                    full_address: full_address
+                    full_address: this.address
                 }
             };
         }

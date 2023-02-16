@@ -1,17 +1,18 @@
 <script>
+import { createSearchBox } from '../assets/autocomplete';
+
 export default {
     name: 'AppBanner',
-    data() {
-        return {
-            full_address: '',
-        }
+    mounted() {
+        const addressBox = document.getElementById('address-box');
+        createSearchBox(addressBox);
     },
     methods: {
         search() {
-            this.$store.fetchApartments(this.full_address).then(this.$store.goList());
+            this.$store.fetchApartments().then(this.$store.goList());
         },
         lucky() {
-            this.full_address = '';
+            this.$store.address = '';
             this.search();
         }
     }
@@ -23,9 +24,14 @@ export default {
             <div class="container-fluid">
                 <div class="search-form">
                     <div class="apartments-form d-flex flex-column align-items-center">
-                        <div>
+                        <!-- <div>
                             <label for="search">Cerca:</label>
                             <input type="text" id="search" v-model="full_address" required>
+                        </div> -->
+                        <div>
+                            <div id="address-box">
+                                <label for="full_address" class="address-label">Molto bene</label>
+                            </div>
                         </div>
                         <button type="button" @click="this.search" class="btn btn-primary mt-1">Cerca</button>
                         <button @click="this.lucky" class="btn btn-success mt-4" href="">Mi sento fortunato</button>
@@ -50,7 +56,7 @@ export default {
         padding: 200px 0 200px 0;
         text-align: center;
 
-        .form-appartament{
+        .apartments-form{
             padding: 80px;
             border-radius: 20px;
             // backdrop-filter: blur(3px);
