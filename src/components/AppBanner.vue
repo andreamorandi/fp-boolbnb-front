@@ -21,6 +21,10 @@ export default {
         },
         lucky() {
             this.$store.address = '';
+            this.$store.roomNumber = 1;
+            this.$store.bedNumber = 1;
+            this.$store.selectedServices = [];
+            this.$store.range = 20;
             this.search();
         },
         getServices() {
