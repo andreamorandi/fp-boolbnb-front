@@ -21,7 +21,6 @@ export default {
         const slug = this.$route.params.slug;
         axios.get(`${this.store.apiBaseUrl}/api/apartments/${slug}`).then(resp => {
             if (resp.data.success) {
-                console.log(resp);
                 this.apartment = resp.data.apartment;
             } else {
                 this.$router.push({ name: "not-found" });
@@ -50,7 +49,6 @@ export default {
             this.success = resp.data.success;
             if (this.success) {
                 this.loading = false;
-                console.log(resp.data);
                 this.firstname = '';
                 this.lastname ='';
                 this.email ='';
@@ -67,7 +65,7 @@ export default {
 
 <template>
     <main>
-        <a @click.prevent="goList()" class="btn btn-primary m-5" href="">Torna alla lista appartamenti</a>
+        <a @click.prevent="goList()" class="btn btn-dark m-5" href="">Torna alla lista appartamenti</a>
         
         <div class="container">
             <div class="row">
