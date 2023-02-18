@@ -58,8 +58,10 @@ export default {
                         this.email = '';
                         this.message = '';
                     } else {
-                        console.log('ERRORE');
-                        this.errors = resp.data.errors
+                        this.loading = false;
+                        this.errors = resp.data.errors;
+                        // console.log(this.errors);
+                        // console.log(this.errors.lead_email[0]);
                     }
                 });
         }
@@ -115,27 +117,27 @@ export default {
                         </div>
                         <div class="form-group">
                             <label for="lead_first_name">Name</label>
-                            <input type="text" class="form-control  mb-3 w-75" :class="{ 'is-invalid': errors.name }"
+                            <input type="text" class="form-control  mb-3 w-75" :class="{ 'is-invalid' : errors.lead_first_name }"
                                 id="lead_first_name" placeholder="ex:Marco" v-model="firstname">
-                            <small class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</small>
+                            <small v-if="errors.lead_first_name" class="invalid-feedback" >{{ errors.lead_first_name[0] }}</small>
                         </div>
                         <div class="form-group">
                             <label for="lead_last_name">Last name</label>
-                            <input type="text" class="form-control  mb-3 w-75" :class="{ 'is-invalid': errors.name }"
+                            <input type="text" class="form-control  mb-3 w-75" :class="{ 'is-invalid': errors.lead_last_name }"
                                 id="lead_last_name" placeholder="ex:Rossi" v-model="lastname">
-                            <small class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</small>
+                            <small class="invalid-feedback" v-if="errors.lead_last_name">{{ errors.lead_last_name[0] }}</small>
                         </div>
                         <div class="form-group ">
                             <label for="lead_email">Email address</label>
-                            <input type="email" class="form-control  mb-3 w-75" :class="{ 'is-invalid': errors.name }"
+                            <input type="email" class="form-control  mb-3 w-75" :class="{ 'is-invalid': errors.lead_email }"
                                 id="lead_email" placeholder="name@example.com" v-model="email">
-                            <small class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</small>
+                            <small class="invalid-feedback" v-if="errors.lead_email">{{ errors.lead_email[0] }}</small>
                         </div>
                         <div class="form-group">
                             <label for="text">Message</label>
                             <textarea class="form-control  mb-3 w-75" placeholder="Lascia il tuo messaggio qui"
-                                :class="{ 'is-invalid': errors.name }" id="text" rows="10" v-model="message"></textarea>
-                            <small class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</small>
+                                :class="{ 'is-invalid': errors.text }" id="text" rows="10" v-model="message"></textarea>
+                            <small class="invalid-feedback" v-if="errors.text">{{ errors.text[0] }}</small>
                         </div>
                         <button type="submit" class="btn btn-success">Invia</button>
                     </form>
