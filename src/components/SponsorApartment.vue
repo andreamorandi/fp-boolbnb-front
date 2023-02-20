@@ -1,7 +1,7 @@
 <script>
 import axios from 'axios';
 export default {
-    name: 'SponsorApartament',
+    name: 'SponsorApartment',
     data() {
         return {
             sponsoredApartments: []
@@ -11,7 +11,6 @@ export default {
         axios.get(this.$store.apiBaseUrl + '/api/apartments/sponsored')
         .then(response => {
             this.sponsoredApartments = response.data.apartments;
-            console.log(response);
         })
         .catch(error => {
             console.log(error)

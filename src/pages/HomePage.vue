@@ -1,6 +1,6 @@
 <script>
 import AppBanner from '../components/AppBanner.vue';
-import SponsorAppartament from '../components/SponsorApartament.vue';
+import SponsorAppartament from '../components/SponsorApartment.vue';
 
 export default {
     name: "HomePage",
