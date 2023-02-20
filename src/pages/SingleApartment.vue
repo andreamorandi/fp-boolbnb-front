@@ -64,7 +64,6 @@ export default {
             if (this.apartment.id) {
                 const data = {
                     date: new Date().toISOString().slice(0, 19).replace('T', ' '),
-                    guest_id: this.guest_id,
                     apartment_id: this.apartment.id,
                 };
                 axios.post(`${this.store.apiBaseUrl}/api/views/`, data).then(resp => {
