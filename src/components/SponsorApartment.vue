@@ -20,14 +20,21 @@ export default {
 </script>
 
 <template>
-    <div class="container-fluid text-center pb-4 bg-dark">
-        <h3 class="pt-4 title">Appartamenti in primo piano</h3>
-        <div class="row g-5 card-container">
-        <div v-for="apartment in sponsoredApartments" :key="apartment.id" class="card col mx-2 pt-2">
-            <img :src="`${this.$store.apiBaseUrl}/storage/${apartment.image}`" alt="">
-            <a :href="'/apartments/' + apartment.id">{{ apartment.title }}</a>
-            <p>{{ apartment.address }}</p>
-        </div>
+    <div class="wrapper bg-dark">
+        <div class="container text-center pb-4 ">
+            <h3 class="pt-4 title">Appartamenti in primo piano</h3>
+            <div class="row  g-5 card-container">
+                <div v-for="apartment in sponsoredApartments" :key="apartment.id" class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="card h-100">
+                        <a :href="'/apartments/' + apartment.id"><img :src="`${this.$store.apiBaseUrl}/storage/${apartment.image}`" alt=""></a>
+                        <div class="card-body">
+                            <h5 class="card-title"><a :href="'/apartments/' + apartment.id">{{ apartment.title }}</a></h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text">{{ apartment.full_address }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -54,7 +61,7 @@ export default {
         }
 
         img{
-            height: 90%;
+            
         }
     }
     .card:hover{

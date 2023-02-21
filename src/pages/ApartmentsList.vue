@@ -19,7 +19,7 @@ export default {
 
 <template>
     <main class="bg-color">
-
+<!-- 
         <div class="container">
             <LoadingSpinner size="large" v-if="this.$store.isLoading"/>
             <div v-else>
@@ -34,8 +34,8 @@ export default {
                     <h1 class="text-center pb-5">Nessun appartamento corrisponde alla ricerca</h1>
                 </div>
             </div>
-        </div>
-        <!-- <LoadingSpinner size="large" v-if="this.$store.isLoading"/>
+        </div> -->
+        <LoadingSpinner size="large" v-if="this.$store.isLoading"/>
         <div v-else class="wrapper mt-1" v-for="apartment in this.$store.apartments">
             <router-link :to="{ name: 'single-apartment', params: { slug: apartment.slug } }" href=""> 
             <div class="container d-flex">
@@ -67,7 +67,7 @@ export default {
                     </li>
                 </ul>
             </nav>
-        </div>  -->
+        </div> 
     </main>
 </template>
 
