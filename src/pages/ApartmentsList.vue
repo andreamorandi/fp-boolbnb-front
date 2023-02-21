@@ -12,7 +12,11 @@ export default {
         if (!this.$store.apartments.length) {
             this.$store.fetchApartments('');
         }
-        console.log(this.$store.apartments);
+    },
+    methods: {
+        search() {
+            this.$store.fetchApartments();
+        },
     }
 };
 </script>
@@ -20,7 +24,7 @@ export default {
 <template>
     <main class="bg-color">
 
-        <div class="container">
+        <!-- <div class="container">
             <LoadingSpinner size="large" v-if="this.$store.isLoading"/>
             <div v-else>
                 <div v-if="this.$store.apartments.length" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 g-md-5 align-items-stretch">
@@ -34,8 +38,8 @@ export default {
                     <h1 class="text-center pb-5">Nessun appartamento corrisponde alla ricerca</h1>
                 </div>
             </div>
-        </div>
-        <!-- <LoadingSpinner size="large" v-if="this.$store.isLoading"/>
+        </div> -->
+        <LoadingSpinner size="large" v-if="this.$store.isLoading"/>
         <div v-else class="wrapper mt-1" v-for="apartment in this.$store.apartments">
             <router-link :to="{ name: 'single-apartment', params: { slug: apartment.slug } }" href=""> 
             <div class="container d-flex">
@@ -54,20 +58,18 @@ export default {
             </router-link>
         </div>
         <div class="pagination-bg d-flex justify-content-center pt-4">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>  -->
+            <nav class="navigation d-flex justify-content-between">
+                    <div>
+                        Pagina {{ this.$store.currentPage }} di {{ this.$store.lastPage }}
+                    </div>
+                    <div>
+                        <a class="btn btn-success me-2" :class="this.$store.currentPage === 1 ? 'disabled' : ''" href=""
+                            @click.prevent="(this.$store.page = this.$store.currentPage - 1)">Indietro</a>
+                        <a class="btn btn-success" :class="{ 'disabled': this.$store.currentPage === this.$store.lastPage }" href=""
+                            @click.prevent="(this.$store.page = this.$store.currentPage + 1)">Avanti</a>
+                    </div>
+                </nav>
+        </div> 
     </main>
 </template>
 
