@@ -33,7 +33,7 @@ export default {
     },
     computed: {
         services() {
-            return this.apartment.services ? this.apartement.services.type.name : "Tipologia non specificata";
+            return this.apartment.services ? this.apartement.services.name : "";
         }
     },
     methods: {
@@ -112,12 +112,12 @@ export default {
 <template>
     <main>
         <div class="container">
-            <a @click.prevent="goList()" class="btn btn-dark m-5" href="">Torna alla lista appartamenti</a>
-        </div>
-        <div class="container-fluid">
-            <h1 class="ms_title-bg">{{ apartment.title }}</h1>
-        </div>
-        <div class="container">
+            <a @click.prevent="goList()" class="btn btn-dark my-5" href="">Torna alla lista appartamenti</a>
+
+            <div class="ms_title-bg mb-4">
+                <h1>{{ apartment.title }}</h1>
+            </div>
+
             <div class="row">
                 <div class="col-lg-6">
                     <img :src="`${store.apiBaseUrl}/storage/${apartment.image}`" alt="`Immagine di ${apartment.image}`"
@@ -132,53 +132,56 @@ export default {
                         <h3>Numero di letti: {{ apartment.bed_number }}</h3>
                         <h3>Numero di bagni: {{ apartment.bathroom_number }}</h3>
                         <h3>Superficie in metri quadri: {{ apartment.surface_sqm }}</h3>
+                        <h3>Servizi:</h3>
+                        <ul class="d-flex">
+                            <li v-for="service in apartment.services" class="h3">- {{ service.name }}</li>
+                        </ul>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="mt-3" id="map"></div>
+                    <div id="map"></div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <section id="contact">
                         <div class="container mb-3">
-                            <form @submit.prevent="sendForm()">
-                                <h3 class="mb-3">Contatta il proprietario</h3>
-                                <p v-if="loading">Invio..</p>
-                                <div class="alert alert-success" v-if="success">
-                                    Il tuo messaggio è stato inviato
-                                </div>
-                                <div class="form-group">
-                                    <label for="lead_first_name">Name</label>
-                                    <input type="text" class="form-control  mb-3 w-75"
-                                        :class="{ 'is-invalid': errors.name }" id="lead_first_name" placeholder="ex:Marco"
-                                        v-model="firstname">
-                                    <small class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lead_last_name">Last name</label>
-                                    <input type="text" class="form-control  mb-3 w-75"
-                                        :class="{ 'is-invalid': errors.name }" id="lead_last_name" placeholder="ex:Rossi"
-                                        v-model="lastname">
-                                    <small class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</small>
-                                </div>
-                                <div class="form-group ">
-                                    <label for="lead_email">Email address</label>
-                                    <input type="email" class="form-control  mb-3 w-75"
-                                        :class="{ 'is-invalid': errors.name }" id="lead_email"
-                                        placeholder="name@example.com" v-model="email">
-                                    <small class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="text">Message</label>
-                                    <textarea class="form-control  mb-3 w-75" placeholder="Lascia il tuo messaggio qui"
-                                        :class="{ 'is-invalid': errors.name }" id="text" rows="10"
-                                        v-model="message"></textarea>
-                                    <small class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</small>
-                                </div>
-                                <button type="submit" class="btn btn-success">Invia</button>
-                            </form>
+                            <div class="ms_form-card d-block m-auto ms_container-custom">
+                                <form @submit.prevent="sendForm()">
+                                    <h3 class="mb-3">Contatta il proprietario</h3>
+                                    <p v-if="loading">Invio..</p>
+                                    <div class="alert alert-success" v-if="success">
+                                        Il tuo messaggio è stato inviato
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lead_first_name">Name</label>
+                                        <input type="text" class="form-control mb-3" :class="{ 'is-invalid': errors.name }"
+                                            id="lead_first_name" placeholder="ex:Marco" v-model="firstname">
+                                        <small class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lead_last_name">Last name</label>
+                                        <input type="text" class="form-control mb-3" :class="{ 'is-invalid': errors.name }"
+                                            id="lead_last_name" placeholder="ex:Rossi" v-model="lastname">
+                                        <small class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</small>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="lead_email">Email address</label>
+                                        <input type="email" class="form-control mb-3" :class="{ 'is-invalid': errors.name }"
+                                            id="lead_email" placeholder="name@example.com" v-model="email">
+                                        <small class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="text">Message</label>
+                                        <textarea class="form-control mb-3" placeholder="Lascia il tuo messaggio qui"
+                                            :class="{ 'is-invalid': errors.name }" id="text" rows="10"
+                                            v-model="message"></textarea>
+                                        <small class="invalid-feedback" v-if="errors.name">{{ errors.name[0] }}</small>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Invia</button>
+                                </form>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -186,8 +189,6 @@ export default {
         </div>
     </main>
 </template>
-<!-- <div>
-</div> -->
 
 <style lang="scss">
 img {
@@ -197,6 +198,7 @@ img {
 #map {
     width: 100%;
     height: 800px;
+    margin-bottom: 3rem;
 }
 
 main {
@@ -229,15 +231,28 @@ main {
 }
 
 .ms_title-bg {
-    display: inline-block;
-
-    height: 10rem;
     font-size: 2.5rem;
-
-    padding: 2rem;
+    margin-bottom: 3rem;
     color: #c9e265;
-    background-color: #2c3e50;
-
-    border-radius: 0 20px 20px 0;
 }
-</style> 
+
+.ms_text {
+    color: #c9e265;
+}
+
+.ms_container-custom {
+    max-width: 1000px;
+}
+
+.ms_form-card {
+    display: inline-block;
+    padding: 2rem;
+    background-color: lightgrey;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 3px 3px 1px black;
+}
+
+li {
+    list-style: none;
+}
+</style>
