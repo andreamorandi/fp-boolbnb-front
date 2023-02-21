@@ -20,14 +20,23 @@ export default {
 </script>
 
 <template>
-    <div class="container-fluid text-center pb-4 bg-dark">
-        <h3 class="pt-4 title">Appartamenti in primo piano</h3>
-        <div class="row g-5 card-container">
-        <div v-for="apartment in sponsoredApartments" :key="apartment.id" class="card col mx-2 pt-2">
-            <img :src="`${this.$store.apiBaseUrl}/storage/${apartment.image}`" alt="">
-            <a :href="'/apartments/' + apartment.id">{{ apartment.title }}</a>
-            <p>{{ apartment.address }}</p>
-        </div>
+    <div class="wrapper bg-dark">
+        <div class="container text-center pb-4 ">
+            <h3 class="pt-4 title">Appartamenti in primo piano</h3>
+            <div class="row  g-5 card-container">
+                <div v-for="apartment in sponsoredApartments" :key="apartment.id" class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="card h-100">
+                        <div class="test-image">
+                            <a :href="'/apartments/' + apartment.id"><img :src="`${this.$store.apiBaseUrl}/storage/${apartment.image}`" alt=""></a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><a :href="'/apartments/' + apartment.id">{{ apartment.title }}</a></h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text align-bottom">{{ apartment.full_address }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -42,7 +51,7 @@ export default {
 }
     .card{
         background-color: #c9e265;
-
+        overflow: hidden;
         a{
             color: black;
             font-size:x-large;
@@ -53,8 +62,13 @@ export default {
             font-size: smaller;
         }
 
-        img{
-            height: 90%;
+        .test-image{
+            height: 200px;
+            overflow: hidden;
+            img{
+                height: 100%;
+                object-fit: cover;
+            };
         }
     }
     .card:hover{
