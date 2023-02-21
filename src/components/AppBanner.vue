@@ -18,6 +18,7 @@ export default {
     methods: {
         search() {
             this.$store.fetchApartments().then(this.$store.goList());
+            console.log(this.$store.apartments);
         },
         lucky() {
             this.$store.address = '';
