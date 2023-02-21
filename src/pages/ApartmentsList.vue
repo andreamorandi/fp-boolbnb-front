@@ -20,7 +20,7 @@ export default {
 <template>
     <main class="bg-color">
 
-        <div class="container">
+        <!-- <div class="container">
             <LoadingSpinner size="large" v-if="this.$store.isLoading"/>
             <div v-else>
                 <div v-if="this.$store.apartments.length" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 g-md-5 align-items-stretch">
@@ -34,13 +34,13 @@ export default {
                     <h1 class="text-center pb-5">Nessun appartamento corrisponde alla ricerca</h1>
                 </div>
             </div>
-        </div>
-        <!-- <LoadingSpinner size="large" v-if="this.$store.isLoading"/>
+        </div> -->
+        <LoadingSpinner size="large" v-if="this.$store.isLoading"/>
         <div v-else class="wrapper mt-1" v-for="apartment in this.$store.apartments">
             <router-link :to="{ name: 'single-apartment', params: { slug: apartment.slug } }" href=""> 
             <div class="container d-flex">
                     <div class="apartment-img">
-                        <img src="../assets/appartament/appartamento1.jpg" alt="">
+                        <img :src="`${this.$store.apiBaseUrl}/storage/${apartment.image}`" alt="">
                     </div>
                     <div class="text-side">
                         <h2>{{apartment.title}}</h2>
@@ -67,7 +67,7 @@ export default {
                     </li>
                 </ul>
             </nav>
-        </div>  -->
+        </div> 
     </main>
 </template>
 
