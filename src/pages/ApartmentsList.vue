@@ -17,6 +17,14 @@ export default {
         search() {
             this.$store.fetchApartments();
         },
+        previousPage() {
+            this.$store.page = this.$store.currentPage - 1
+            this.search();
+        },
+        nextPage() {
+            this.$store.page = this.$store.currentPage + 1
+            this.search();
+        },
     }
 };
 </script>
@@ -57,16 +65,16 @@ export default {
                 </div>
             </router-link>
         </div>
-        <div class="pagination-bg d-flex justify-content-center pt-4">
-            <nav class="navigation d-flex justify-content-between">
-                <div>
-                    Pagina {{ this.$store.currentPage }} di {{ this.$store.lastPage }}
+        <div class="pagination-bg d-flex justify-content-center py-5">
+            <nav class="navigation d-flex flex-column align-items-center">
+                <div class="mb-2 text-white">
+                    <h5>Pagina {{ this.$store.currentPage }} di {{ this.$store.lastPage }}</h5>
                 </div>
                 <div>
-                    <a class="btn btn-success me-2" :class="this.$store.currentPage === 1 ? 'disabled' : ''" href=""
-                        @click.prevent="(this.$store.page = this.$store.currentPage - 1)">Indietro</a>
-                    <a class="btn btn-success" :class="{ 'disabled': this.$store.currentPage === this.$store.lastPage }" href=""
-                        @click.prevent="(this.$store.page = this.$store.currentPage + 1)">Avanti</a>
+                    <a class="btn ms_btn-success me-3" :class="this.$store.currentPage === 1 ? 'disabled' : ''" href=""
+                        @click.prevent="previousPage()"><h6 class="mb-0">Indietro</h6></a>
+                    <a class="btn ms_btn-success" :class="{ 'disabled': this.$store.currentPage === this.$store.lastPage }" href=""
+                        @click.prevent="nextPage()"><h6 class="mb-0">Avanti</h6></a>
                 </div>
             </nav>
         </div>

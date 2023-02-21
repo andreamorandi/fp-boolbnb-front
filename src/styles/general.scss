@@ -29,6 +29,12 @@ a {
     font-weight: bold;
 }
 
+.ms_btn-success {
+    background-color: #c9e265;
+    &:hover {
+        background-color: white;
+    }
+}
 
 
 

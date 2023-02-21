@@ -30,7 +30,7 @@ export const store = reactive({
             this.apartments = resp.data.apartments.data;
             this.isLoading = false;
             this.currentPage = resp.data.apartments.current_page;
-            this.lastpage = resp.data.apartments.last_page;
+            this.lastPage = resp.data.apartments.last_page;
             return resp.data.apartments.data;
         }).catch(error => {
             console.log(error);
