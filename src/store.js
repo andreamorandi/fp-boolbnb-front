@@ -50,6 +50,18 @@ export const store = reactive({
     clearServices() {
         this.services = [];
     },
+    resetPage() {
+        this.page = 1;
+        this.currentPage = 1;
+        this.lastPage = null;
+    },
+    resetSearch() {
+        this.address = '';
+        this.roomNumber = 1;
+        this.bedNumber = 1;
+        this.selectedServices = [];
+        this.range = 20;
+    },
     goHome() {
         router.push({ name: 'home' });
     },

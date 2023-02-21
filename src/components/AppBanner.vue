@@ -10,6 +10,7 @@ export default {
     },
     created() {
         this.getServices();
+        this.$store.resetSearch();
     },
     mounted() {
         const addressBox = document.getElementById('address-box');
@@ -17,15 +18,12 @@ export default {
     },
     methods: {
         search() {
+            this.$store.resetPage();
             this.$store.fetchApartments().then(this.$store.goList());
-            console.log(this.$store.apartments);
         },
         lucky() {
-            this.$store.address = '';
-            this.$store.roomNumber = 1;
-            this.$store.bedNumber = 1;
-            this.$store.selectedServices = [];
-            this.$store.range = 20;
+            this.$store.resetPage();
+            this.$store.resetSearch();
             this.search();
         },
         getServices() {
