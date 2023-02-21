@@ -66,7 +66,7 @@ export default {
     </main>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .pagination-bg{
     background-color: rgb(24, 24, 24)!important;

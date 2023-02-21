@@ -91,7 +91,7 @@ export default{
 	transition: all 0.3s ease;
 }
 .footer-col ul li a:hover{
-	color: #ffffff;
+	color: #c9e265;
 	padding-left: 8px;
 }
 .footer-col .social-links a{
@@ -108,7 +108,7 @@ export default{
 }
 .footer-col .social-links a:hover{
 	color: #24262b;
-	background-color: #ffffff;
+	background-color: #c9e265;
 }
 
 </style>
