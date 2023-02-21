@@ -12,9 +12,13 @@ export const store = reactive({
     roomNumber: 1,
     bedNumber: 1,
     range: 20,
+    page: 1,
+    currentPage: 1,
+    lastPage: null,
     fetchApartments() {
         this.isLoading = true;
         const params = {
+            page: this.page,
             ...(this.address && { full_address: this.address }),
             ...(this.roomNumber > 1 && { room_number: this.roomNumber }),
             ...(this.bedNumber > 1 && { bed_number: this.bedNumber }),
@@ -23,9 +27,11 @@ export const store = reactive({
         };
 
         return axios.get(`${this.apiBaseUrl}/api/apartments`, { params: params }).then(resp => {
-            this.apartments = resp.data.apartments;
+            this.apartments = resp.data.apartments.data;
             this.isLoading = false;
-            return resp.data.apartments;
+            this.currentPage = resp.data.apartments.current_page;
+            this.lastpage = resp.data.apartments.last_page;
+            return resp.data.apartments.data;
         }).catch(error => {
             console.log(error);
         });

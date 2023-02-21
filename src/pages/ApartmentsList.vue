@@ -12,7 +12,11 @@ export default {
         if (!this.$store.apartments.length) {
             this.$store.fetchApartments('');
         }
-        console.log(this.$store.apartments);
+    },
+    methods: {
+        search() {
+            this.$store.fetchApartments();
+        },
     }
 };
 </script>
@@ -54,20 +58,18 @@ export default {
             </router-link>
         </div>
         <div class="pagination-bg d-flex justify-content-center pt-4">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
+            <nav class="navigation d-flex justify-content-between">
+                <div>
+                    Pagina {{ this.$store.currentPage }} di {{ this.$store.lastPage }}
+                </div>
+                <div>
+                    <a class="btn btn-success me-2" :class="this.$store.currentPage === 1 ? 'disabled' : ''" href=""
+                        @click.prevent="(this.$store.page = this.$store.currentPage - 1)">Indietro</a>
+                    <a class="btn btn-success" :class="{ 'disabled': this.$store.currentPage === this.$store.lastPage }" href=""
+                        @click.prevent="(this.$store.page = this.$store.currentPage + 1)">Avanti</a>
+                </div>
             </nav>
-        </div> 
+        </div>
     </main>
 </template>
 
