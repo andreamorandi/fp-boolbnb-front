@@ -8,14 +8,25 @@ export default {
         ApartmentCard,
         LoadingSpinner
     },
+    data() {
+        return {
+            advancedSearch: false,
+        }
+    },
     created() {
+        this.getServices();
         if (!this.$store.apartments.length) {
             this.$store.fetchApartments('');
         }
     },
+    
     methods: {
         search() {
             this.$store.fetchApartments();
+        },
+        searchTest() {
+            this.$store.fetchApartments().then(this.$store.goList());
+            console.log(this.$store.apartments);
         },
         previousPage() {
             this.$store.page = this.$store.currentPage - 1
@@ -25,6 +36,9 @@ export default {
             this.$store.page = this.$store.currentPage + 1
             this.search();
         },
+        getServices() {
+            this.$store.fetchServices();
+        }
     }
 };
 </script>
@@ -58,7 +72,7 @@ export default {
                 <div>
                     <a class="btn ms_btn-success me-3" :class="this.$store.currentPage === 1 ? 'disabled' : ''" href=""
                         @click.prevent="previousPage()"><h6 class="mb-0">Indietro</h6></a>
-                    <a class="btn ms_btn-success" :class="{ 'disabled': this.$store.currentPage === this.$store.lastPage }" href=""
+                    <a class="btn btn-light ms_btn-success" :class="{ 'disabled': this.$store.currentPage === this.$store.lastPage }" href=""
                         @click.prevent="nextPage()"><h6 class="mb-0">Avanti</h6></a>
                 </div>
             </nav>
@@ -69,13 +83,13 @@ export default {
 <style lang="scss" scoped>
 
 .pagination-bg{
-    background-color: rgb(24, 24, 24)!important;
+    background-color: #212529!important;
 }
 .bg-color{
     background-color: #c9e265;
 }
 .wrapper{
-    background-color: rgb(24, 24, 24);
+    background-color:#212529;
     padding: 10px 0 10px 0;
 
 }
@@ -91,6 +105,8 @@ export default {
 
     img{
         border-radius: 15px;
+        height: 300px;
+        object-fit: cover;
 
     }
 }
