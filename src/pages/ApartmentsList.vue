@@ -1,4 +1,4 @@
-  <script>
+<script>
 import ApartmentCard from '../components/ApartmentCard.vue';
 import LoadingSpinner from '../components/LoadingSpinner.vue';
 

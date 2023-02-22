@@ -38,7 +38,9 @@ export default {
             <div class="container-fluid">
                 <div class="search-form">
                     <div class="apartments-form d-flex flex-column align-items-center">
+                        <h3>Dove vorresti andare di bello</h3>
                     <div class="w-100 d-flex justify-content-center">
+                        
                         <div id="address-box"></div>
                     </div>
                     <button type="button" @click="this.search" class="btn btn-primary" v-show="!advancedSearch">Cerca</button>
@@ -97,13 +99,13 @@ export default {
 </template>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .banner {
     width: 100%;
-    background-image: url(../assets/banner3.jpeg);
-    background-position: center;
+    background-image: url(../assets/Slide-Baros-Maldives1920x1000.jpg);
     background-repeat: no-repeat;
+    background-position:center 20%;
     background-size: cover;
 
     .search-form {
@@ -116,14 +118,16 @@ export default {
             padding: 80px;
             border-radius: 20px;
             backdrop-filter: blur(3px);
-
+           
             @media (min-width:1270px) {
                 width: 60%;
                 margin: 0 auto;
                 display: flex;
                 flex-direction: column;
             }
-
+            h3{
+                color: #c9e265;
+            }
             .form-group {
                 margin-top: 20px;
 
@@ -138,21 +142,24 @@ export default {
             }
 
             .btn {
-                background-color: #2c3e50;
-                border-color: #2c3e50;
+                background-color: #212529;
+                border-color: #212529;
                 font-weight: bold;
+                color: #c9e265;
             }
 
             .btn-secondary {
-                background-color: #34495e;
-                border-color: #34495e;
+                background-color: #212529;
+                border-color: #212529;
                 font-weight: bold;
+                color: #c9e265;
             }
 
             .btn-success {
-                background-color: #27ae60;
-                border-color: #27ae60;
+                background-color: #c9e265;
+                border-color: #c9e265;
                 font-weight: bold;
+                color: #212529;
             }
         }
     }

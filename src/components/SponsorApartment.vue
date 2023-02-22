@@ -31,8 +31,7 @@ export default {
                         </div>
                         <div class="card-body">
                             <h5 class="card-title"><router-link :to="{ name: 'single-apartment', params: { slug: apartment.slug } }" href="">{{ apartment.title }}</router-link></h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text align-bottom">{{ apartment.full_address }}</p>
+                            <p class="card-text ">{{ apartment.full_address }}</p>
                         </div>
                     </div>
                 </div>
@@ -79,8 +78,6 @@ export default {
     }
     .card-body{
 
-        .align-bottom{
-            color: #c9e265;
-        }
+        
     }
 </style>

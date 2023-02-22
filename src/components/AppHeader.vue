@@ -6,8 +6,8 @@ export default {
 
 <template>
     <header >
-        <nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg">
+  <div class="container">
     <a class="navbar-brand" href="#"><img id="logo" src="../assets/bebr.png" alt="logo BeBr" @click.prevent="this.$store.goHome()"></a>
       <div>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -24,6 +24,12 @@ export default {
     </header>
 </template>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+nav{
+  background-color: #495159;
+  a{
+    color: #c9e265;
+    font-weight: bold;
+  }
+}
 </style>
