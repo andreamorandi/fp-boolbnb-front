@@ -26,15 +26,15 @@ export default {
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: opacity 0.5s, transform 0.4s;
+  transition: opacity 0.4s, transform 0.4s;
 }
 
 .slide-enter-from {
   opacity: 0;
-  transform: translateX(-40%);
+  transform: translateX(-60%);
 }
 
 .slide-leave-to {
-  opacity: 0;
+  opacity: 1;
 }
 </style>

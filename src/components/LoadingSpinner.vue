@@ -43,7 +43,7 @@
         width: 13px;
         height: 13px;
         border-radius: 50%;
-        background: #c9e265;
+        background-color: rgb(24, 24, 24);
         animation-timing-function: cubic-bezier(0, 1, 1, 0);
     }
 
