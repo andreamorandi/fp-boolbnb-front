@@ -87,7 +87,7 @@ main {
     border-radius:15px ;
 }
 .wrapper:hover{
-    background-color: rgb(53, 53, 53);
+    background-image: linear-gradient(to top, rgba(201, 226, 101, 0.2), rgba(255, 255, 255, 0));
 }
 .apartment-img{
     width: 60%;
