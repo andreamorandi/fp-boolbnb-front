@@ -73,17 +73,17 @@ main {
 }
 
 .pagination-bg{
-    background-color: rgb(24, 24, 24)!important;
+    background-color: #212529!important;
 }
 .bg-color{
     background-color: #c9e265;
 }
 .wrapper{
-    background-color: rgb(24, 24, 24);
+    background-color: #212529;
     padding: 10px 0 10px 0;
 
 }
-.contianer{
+.container{
     border-radius:15px ;
 }
 .wrapper:hover{
@@ -92,10 +92,13 @@ main {
 .apartment-img{
     width: 60%;
     margin-right: 10px;
-
+    display: flex;
+    justify-content: center;
     img{
         border-radius: 15px;
-
+        height: 300px;
+        max-width: 80%;
+        object-fit: cover;
     }
 }
 .text-side{
