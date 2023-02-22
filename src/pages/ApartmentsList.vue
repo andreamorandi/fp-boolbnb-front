@@ -67,6 +67,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use "../styles/partials/variables" as *;
+main {
+    margin-top: $header-height;
+}
 
 .pagination-bg{
     background-color: rgb(24, 24, 24)!important;

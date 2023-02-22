@@ -21,6 +21,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use "../styles/partials/variables" as *;
+main {
+    margin-top: $header-height;
+}
 .not-found-container {
     padding-top: 5rem;
 

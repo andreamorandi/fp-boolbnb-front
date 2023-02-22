@@ -25,11 +25,22 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-nav{
-  background-color: #495159;
-  a{
-    color: #c9e265;
-    font-weight: bold;
+@use "../styles/partials/variables" as *;
+header {
+  width: 100%;
+  height: $header-height;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  nav{
+    width: 100%;
+    height: $header-height;
+    background-image: linear-gradient(to bottom, rgba(175, 175, 175, .5), rgba(255, 255, 255, 0));
+    a{
+      color: #c9e265;
+      font-weight: bold;
+    }
   }
 }
 </style>

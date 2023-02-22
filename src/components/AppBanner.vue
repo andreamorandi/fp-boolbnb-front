@@ -111,7 +111,7 @@ export default {
     .search-form {
     margin: 0 auto;
     width: 70%;
-    padding: 100px 0 100px 0;
+    padding: 200px 0 100px 0;
     text-align: center;
 
         .apartments-form {

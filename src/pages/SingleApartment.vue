@@ -190,7 +190,13 @@ export default {
     </main>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@use "../styles/partials/variables" as *;
+
+main {
+    margin-top: $header-height;
+}
+
 img {
     width: 100%;
 }
