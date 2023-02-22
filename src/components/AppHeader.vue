@@ -27,6 +27,9 @@ export default {
 <style lang="scss" scoped>
 nav{
   background-color: #495159;
-
+  a{
+    color: #c9e265;
+    font-weight: bold;
+  }
 }
 </style>
