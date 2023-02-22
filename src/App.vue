@@ -13,10 +13,28 @@ export default {
 
 <template>
   <AppHeader />
-  <router-view></router-view>
+  <router-view v-slot="{ Component }">
+    <transition name="slide" mode="out-in">
+      <component :is="Component" :key="$route.path" />
+    </transition>
+  </router-view>
   <AppFooter />
 </template>
 
 <style lang="scss">
 @use "./styles/general.scss" as *;
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.5s, transform 0.4s;
+}
+
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(-40%);
+}
+
+.slide-leave-to {
+  opacity: 0;
+}
 </style>
