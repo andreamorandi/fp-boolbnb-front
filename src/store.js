@@ -25,7 +25,7 @@ export const store = reactive({
             ...(this.selectedServices.length && { services: this.selectedServices }),
             ...(this.range !== 20 && { range: this.range }),
         };
-
+        console.log(this.selectedServices);
         return axios.get(`${this.apiBaseUrl}/api/apartments`, { params: params }).then(resp => {
             this.apartments = resp.data.apartments.data;
             this.isLoading = false;

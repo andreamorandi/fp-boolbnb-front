@@ -38,7 +38,7 @@ export default {
             <div class="container-fluid">
                 <div class="search-form">
                     <div class="apartments-form d-flex flex-column align-items-center">
-                        <h3>Dove vorresti andare di bello</h3>
+                        <h2><strong>Ogni viaggio è un'avventura che ti porta a scoprire luoghi meravigliosi e incontrare persone incredibili</strong></h2>
                     <div class="w-100 d-flex justify-content-center">
                         
                         <div id="address-box"></div>
@@ -117,7 +117,7 @@ export default {
         .apartments-form {
             padding: 80px;
             border-radius: 20px;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(1.5px);
            
             @media (min-width:1270px) {
                 width: 60%;
@@ -125,7 +125,7 @@ export default {
                 display: flex;
                 flex-direction: column;
             }
-            h3{
+            h2{
                 color: #c9e265;
             }
             .form-group {
@@ -194,8 +194,12 @@ export default {
         }
     }
     #address-box {
-        width: 75%;
+        width: 60%;
         margin-bottom: 20px;
+        transition: .5s;
+        &:focus-within {
+            width: 100%;
+        }
     }
 }
 

@@ -51,9 +51,8 @@ export default {
     .card{
         border-color: #c9e265;
         overflow: hidden;
+        transition: .5s;
         
-
-
         a{
             color: #c9e265;
             font-size:x-large;

@@ -81,13 +81,14 @@ main {
 .wrapper{
     background-color: #212529;
     padding: 10px 0 10px 0;
-
+    transition: all .5s;
 }
 .container{
     border-radius:15px ;
 }
 .wrapper:hover{
     background-image: linear-gradient(to top, rgba(201, 226, 101, 0.2), rgba(255, 255, 255, 0));
+    transform: scale(1.02);
 }
 .apartment-img{
     width: 60%;
